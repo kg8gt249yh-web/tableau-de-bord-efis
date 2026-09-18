@@ -1,96 +1,67 @@
 #include <stdio.h>
 
-#define RESET   "\033[0m"
-#define CYAN    "\033[36m"
-#define GREEN   "\033[32m"
-#define YELLOW  "\033[33m"
-#define MAGENTA "\033[35m"
-#define WHITE   "\033[37m"
-#define BLUE    "\033[34m"
-#define DIM     "\033[2m"
-
 int main(void)
 {
-    printf("\033[2J\033[H");
+    int vitesse = 123;
+    int altitude = 3500;
+    int cap = 90;
 
-    printf(CYAN
-    "+--------------------------------------------------------------------------------+\n"
-    "|                         A320 FLIGHT DISPLAY                                    |\n"
-    "+--------------------------------------------------------------------------------+\n"
-    RESET);
+    int vitesse_1 = vitesse - 40;
+    int vitesse_2 = vitesse - 20;
+    int vitesse_3 = vitesse + 20;
+    int vitesse_4 = vitesse + 40;
 
-    printf(
-    "| FMA | " GREEN "THR CLB" RESET " | " GREEN "CLB" RESET " | " GREEN "NAV" RESET
-    " | " GREEN "AP1" RESET " | " GREEN "A/THR" RESET
-    " |              FCU  SPD " YELLOW "123" RESET
-    " HDG " YELLOW "090" RESET
-    " ALT " YELLOW "3500" RESET " |\n");
+    int altitude_1 = altitude - 1000;
+    int altitude_2 = altitude - 500;
+    int altitude_3 = altitude + 500;
+    int altitude_4 = altitude + 1000;
 
-    printf(CYAN
-    "+--------------------------------------+-----------------------------------------+\n"
-    "|          PRIMARY FLIGHT DISPLAY      |           NAVIGATION DISPLAY            |\n"
-    "+--------------------------------------+-----------------------------------------+\n"
-    RESET);
+    int cap_1 = cap - 30;
+    int cap_2 = cap - 15;
+    int cap_3 = cap + 15;
+    int cap_4 = cap + 30;
 
-    printf(
-    "| SPEED        ATTITUDE       ALTITUDE  |              NAVIGATION / ND            |\n"
-    "|                                      |                                         |\n"
-    "| 180              ^             5000  |       030       000       030           |\n"
-    "| 160           /  |  \\          4000  |    330    \\             /    060        |\n"
-    "| 140         /    |    \\        3500  |  300        \\    " MAGENTA "● ABC" RESET "    /    090        |\n"
-    "| " YELLOW ">123" RESET " -----+-----+-----       3000  |              \\    " YELLOW "+" RESET "    /              |\n"
-    "| 120         \\    |    /        2500  |  270 --------- " YELLOW "▲" RESET " --------- 090          |\n"
-    "| 100           \\  |  /          2000  |              /         \\                 |\n"
-    "| 080              v             1500  |           120           060              |\n"
-    "|                                      |                                         |\n"
-    "|        60 80 100 [" YELLOW "123" RESET "] 140 160 180     |          " GREEN "TRK 090" RESET "   " GREEN "12.3 NM" RESET "          |\n"
-    "+--------------------------------------+-----------------------------------------+\n"
-    );
+    char direction = 'E';
 
-    printf(
-    "|             HEADING / TRACK          |              NAVIGATION DATA             |\n"
-    "|                                      |                                         |\n"
-    "|                  N                   | CRS   " GREEN "090" RESET "       TRK   " GREEN "088" RESET "              |\n"
-    "|                  |                   | WPT   " GREEN "ABC" RESET "       GS    " GREEN "324 KT" RESET "            |\n"
-    "|            W ----+---- E             | HDG   " GREEN "090" RESET "       ETA   " GREEN "14:35" RESET "            |\n"
-    "|                  |                   | FUEL  " GREEN "64500 KG" RESET "                           |\n"
-    "|                  S                   | QNH   " GREEN "1013" RESET "                              |\n"
-    "|                " YELLOW "090°" RESET "                   |                                         |\n"
-    "+--------------------------------------+-----------------------------------------+\n"
-    );
-
-    printf(
-    "| THRUST                               | TERRAIN / FLIGHT PATH                    |\n"
-    "|                                      |                                         |\n"
-    "|      S ----------- F                 |              " GREEN "/" RESET "                    |\n"
-    "|           " GREEN "THR 58.3 %" RESET "               |           " GREEN "/" RESET "                      |\n"
-    "|                                      |        " GREEN "/" RESET "                        |\n"
-    "|                                      |     " YELLOW "^^^^^^^" RESET "      " YELLOW "^^^^^^^" RESET "              |\n"
-    "+--------------------------------------+-----------------------------------------+\n"
-    );
-
-    printf(
-    "| SYSTEMS                              | STATUS                                  |\n"
-    "|                                      | AP1       " GREEN "ON" RESET "                        |\n"
-    "| A/THR      " GREEN "ON" RESET "                  | FD        " GREEN "ON" RESET "                        |\n"
-    "| NAV        " GREEN "GPS" RESET "                 | TCAS      " GREEN "TA/RA" RESET "                      |\n"
-    "+--------------------------------------------------------------------------------+\n"
-    );
-
-    printf(
-    "| OAT " YELLOW "-2 C" RESET
-    " | ISA " GREEN "+0 C" RESET
-    " | FUEL " GREEN "6800 KG" RESET
-    " | UTC " GREEN "14:28" RESET
-    " | VOR1 " GREEN "112.30" RESET
-    " | FLT " GREEN "1:12" RESET
-    " | VOR2 " GREEN "116.20" RESET " |\n"
-    "+--------------------------------------------------------------------------------+\n"
-    );
-
-    printf(DIM
-    "                         A320 EFIS TRAINING DISPLAY\n"
-    RESET);
+    printf("+-----------------------------------------------------------------------+\n");
+    printf("|                         A320 FLIGHT DISPLAY                           |\n");
+    printf("+--------------------------------------+--------------------------------+\n");
+    printf("|              PRIMARY FLIGHT DISPLAY  |       NAVIGATION DISPLAY       |\n");
+    printf("+--------------------------------------+--------------------------------+\n");
+    printf("| SPEED        ATTITUDE       ALTITUDE  |          HEADING               |\n");
+    printf("|                                      |                                |\n");
+    printf("| %3d              ^           %4d    |             %03d               |\n",
+           vitesse_4, altitude_4, cap_4);
+    printf("| %3d           /  |  \\        %4d    |       %03d       %03d           |\n",
+           vitesse_3, altitude_3, cap_3, cap_4);
+    printf("| %3d         /    |    \\      %4d    |   %03d     +     %03d           |\n",
+           vitesse_2, altitude_2, cap_2, cap);
+    printf("|>%3d -------+-----+-----       %4d    |       %03d       %03d           |\n",
+           vitesse, altitude, cap_1, cap_2);
+    printf("| %3d         \\    |    /      %4d    |             %03d               |\n",
+           vitesse_1, altitude_1, cap);
+    printf("| %3d           \\  |  /        %4d    |                                |\n",
+           vitesse_2, altitude_2, cap);
+    printf("| %3d              v           %4d    |             %c                  |\n",
+           vitesse_1, altitude_1, direction);
+    printf("|                                      |                                |\n");
+    printf("|     %3d  %3d  [%3d]  %3d  %3d       |      %03d  %03d  %03d  %03d      |\n",
+           vitesse_1, vitesse_2, vitesse, vitesse_3, vitesse_4,
+           cap_1, cap_2, cap, cap_3);
+    printf("+--------------------------------------+--------------------------------+\n");
+    printf("|              HEADING / TRACK         |        FLIGHT DATA             |\n");
+    printf("|                                      |                                |\n");
+    printf("|                  N                   | SPEED       %3d KTS            |\n",
+           vitesse);
+    printf("|                  |                   | ALTITUDE   %4d FT             |\n",
+           altitude);
+    printf("|            W ----+---- E             | HEADING     %03d DEG            |\n",
+           cap);
+    printf("|                  |                   |                                |\n");
+    printf("|                  S                   |                                |\n");
+    printf("+--------------------------------------+--------------------------------+\n");
+    printf("|              END OF DISPLAY          |                                |\n");
+    printf("+-----------------------------------------------------------------------+\n");
 
     return 0;
 }
