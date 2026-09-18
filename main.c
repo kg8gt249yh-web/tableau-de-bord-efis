@@ -1,60 +1,96 @@
 #include <stdio.h>
 
+#define RESET   "\033[0m"
+#define CYAN    "\033[36m"
+#define GREEN   "\033[32m"
+#define YELLOW  "\033[33m"
+#define MAGENTA "\033[35m"
+#define WHITE   "\033[37m"
+#define BLUE    "\033[34m"
+#define DIM     "\033[2m"
+
 int main(void)
 {
-    printf("\033[36m");
-    
-    printf("+--------------------------------------------------------------------------------+\n");
-    printf("|                         A320 FLIGHT DISPLAY                                   |\n");
-    printf("+--------------------------------------------------------------------------------+\n");
+    printf("\033[2J\033[H");
 
-    printf("| FMA | THR CLB | CLB | NAV | AP1 | A/THR |              FCU  SPD 123  HDG 090 |\n");
-    printf("+--------------------------------------+-----------------------------------------+\n");
+    printf(CYAN
+    "+--------------------------------------------------------------------------------+\n"
+    "|                         A320 FLIGHT DISPLAY                                    |\n"
+    "+--------------------------------------------------------------------------------+\n"
+    RESET);
 
-    printf("|          PRIMARY FLIGHT DISPLAY      |             NAVIGATION DISPLAY          |\n");
-    printf("+--------------------------------------+-----------------------------------------+\n");
+    printf(
+    "| FMA | " GREEN "THR CLB" RESET " | " GREEN "CLB" RESET " | " GREEN "NAV" RESET
+    " | " GREEN "AP1" RESET " | " GREEN "A/THR" RESET
+    " |              FCU  SPD " YELLOW "123" RESET
+    " HDG " YELLOW "090" RESET
+    " ALT " YELLOW "3500" RESET " |\n");
 
-    printf("| SPEED          ATTITUDE       ALTITUDE|          NAVIGATION / ND                |\n");
-    printf("|                                      |                                         |\n");
-    printf("|  180              ^             5000 |              030       000       030   |\n");
-    printf("|  160            / | \\           4000 |          330    \\     /     /    060   |\n");
-    printf("|  140           /  |  \\          3500 |       300         \\ + /         090    |\n");
-    printf("| >123   -------/---+---\\-------  3000 |    270 -----------  +  ----------- 090 |\n");
-    printf("|  120          \\   |   /         2500 |       240          / \\          120    |\n");
-    printf("|  100           \\  |  /          2000 |          210     /     \\     150      |\n");
-    printf("|  080            \\ | /           1500 |                 TRK 090                |\n");
-    printf("|                                      |                                         |\n");
-    printf("|     60  80 100 [123] 140 160 180   |             GS 324 T   12.3 NM         |\n");
+    printf(CYAN
+    "+--------------------------------------+-----------------------------------------+\n"
+    "|          PRIMARY FLIGHT DISPLAY      |           NAVIGATION DISPLAY            |\n"
+    "+--------------------------------------+-----------------------------------------+\n"
+    RESET);
 
-    printf("+--------------------------------------+-----------------------------------------+\n");
+    printf(
+    "| SPEED        ATTITUDE       ALTITUDE  |              NAVIGATION / ND            |\n"
+    "|                                      |                                         |\n"
+    "| 180              ^             5000  |       030       000       030           |\n"
+    "| 160           /  |  \\          4000  |    330    \\             /    060        |\n"
+    "| 140         /    |    \\        3500  |  300        \\    " MAGENTA "● ABC" RESET "    /    090        |\n"
+    "| " YELLOW ">123" RESET " -----+-----+-----       3000  |              \\    " YELLOW "+" RESET "    /              |\n"
+    "| 120         \\    |    /        2500  |  270 --------- " YELLOW "▲" RESET " --------- 090          |\n"
+    "| 100           \\  |  /          2000  |              /         \\                 |\n"
+    "| 080              v             1500  |           120           060              |\n"
+    "|                                      |                                         |\n"
+    "|        60 80 100 [" YELLOW "123" RESET "] 140 160 180     |          " GREEN "TRK 090" RESET "   " GREEN "12.3 NM" RESET "          |\n"
+    "+--------------------------------------+-----------------------------------------+\n"
+    );
 
-    printf("|              HEADING / TRACK         |              NAVIGATION DATA            |\n");
-    printf("|                                      |                                         |\n");
-    printf("|                    N                 |     CRS 090       TRK 088              |\n");
-    printf("|                    |                 |     WPT ABC       GS  324 KT            |\n");
-    printf("|             W -----+----- E          |     HDG 090       ETA 14:35             |\n");
-    printf("|                    |                 |     FUEL 64500 KG                      |\n");
-    printf("|                    S                 |     QNH 1013                           |\n");
-    printf("|                  090 deg             |                                         |\n");
+    printf(
+    "|             HEADING / TRACK          |              NAVIGATION DATA             |\n"
+    "|                                      |                                         |\n"
+    "|                  N                   | CRS   " GREEN "090" RESET "       TRK   " GREEN "088" RESET "              |\n"
+    "|                  |                   | WPT   " GREEN "ABC" RESET "       GS    " GREEN "324 KT" RESET "            |\n"
+    "|            W ----+---- E             | HDG   " GREEN "090" RESET "       ETA   " GREEN "14:35" RESET "            |\n"
+    "|                  |                   | FUEL  " GREEN "64500 KG" RESET "                           |\n"
+    "|                  S                   | QNH   " GREEN "1013" RESET "                              |\n"
+    "|                " YELLOW "090°" RESET "                   |                                         |\n"
+    "+--------------------------------------+-----------------------------------------+\n"
+    );
 
-    printf("+--------------------------------------+-----------------------------------------+\n");
+    printf(
+    "| THRUST                               | TERRAIN / FLIGHT PATH                    |\n"
+    "|                                      |                                         |\n"
+    "|      S ----------- F                 |              " GREEN "/" RESET "                    |\n"
+    "|           " GREEN "THR 58.3 %" RESET "               |           " GREEN "/" RESET "                      |\n"
+    "|                                      |        " GREEN "/" RESET "                        |\n"
+    "|                                      |     " YELLOW "^^^^^^^" RESET "      " YELLOW "^^^^^^^" RESET "              |\n"
+    "+--------------------------------------+-----------------------------------------+\n"
+    );
 
-    printf("| THRUST               | TERRAIN / FLIGHT PATH              | SYSTEMS            |\n");
-    printf("|                      |                                    |                    |\n");
-    printf("| S ---------------- F|             /                      | AP1       ON       |\n");
-    printf("|       THR 58.3 %%     |           /   /                   | A/THR     ON       |\n");
-    printf("|                      |         /   /                     | FD        ON       |\n");
-    printf("|                      |       /                           | NAV       GPS      |\n");
-    printf("|                      |  ^^^^^^^^     ^^^^^^^^            | TCAS      TA/RA    |\n");
+    printf(
+    "| SYSTEMS                              | STATUS                                  |\n"
+    "|                                      | AP1       " GREEN "ON" RESET "                        |\n"
+    "| A/THR      " GREEN "ON" RESET "                  | FD        " GREEN "ON" RESET "                        |\n"
+    "| NAV        " GREEN "GPS" RESET "                 | TCAS      " GREEN "TA/RA" RESET "                      |\n"
+    "+--------------------------------------------------------------------------------+\n"
+    );
 
-    printf("+----------------------+------------------------------------+--------------------+\n");
+    printf(
+    "| OAT " YELLOW "-2 C" RESET
+    " | ISA " GREEN "+0 C" RESET
+    " | FUEL " GREEN "6800 KG" RESET
+    " | UTC " GREEN "14:28" RESET
+    " | VOR1 " GREEN "112.30" RESET
+    " | FLT " GREEN "1:12" RESET
+    " | VOR2 " GREEN "116.20" RESET " |\n"
+    "+--------------------------------------------------------------------------------+\n"
+    );
 
-    printf("| OAT -2 C | ISA +0 C | FUEL 6800 KG | UTC 14:28 | VOR1 112.30 | FLT 1:12 | VOR2 116.20 |\n");
-
-    printf("+--------------------------------------------------------------------------------+\n");
-
-    printf("\033[0m");
-    printf("                    A320 EFIS TRAINING DISPLAY - TERMINAL SIMULATION\n");
+    printf(DIM
+    "                         A320 EFIS TRAINING DISPLAY\n"
+    RESET);
 
     return 0;
 }
