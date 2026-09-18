@@ -2,65 +2,99 @@
 
 int main(void)
 {
+    /* Valeurs principales du tableau de bord */
     int vitesse = 123;
     int altitude = 3500;
     int cap = 90;
 
-    int vitesse_1 = vitesse - 40;
-    int vitesse_2 = vitesse - 20;
-    int vitesse_3 = vitesse + 20;
-    int vitesse_4 = vitesse + 40;
+    /* Graduations de vitesse calculées */
+    int vitesse_m40 = vitesse - 40;
+    int vitesse_m20 = vitesse - 20;
+    int vitesse_p20 = vitesse + 20;
+    int vitesse_p40 = vitesse + 40;
 
-    int altitude_1 = altitude - 1000;
-    int altitude_2 = altitude - 500;
-    int altitude_3 = altitude + 500;
-    int altitude_4 = altitude + 1000;
+    /* Graduations d'altitude calculées */
+    int altitude_m1000 = altitude - 1000;
+    int altitude_m500 = altitude - 500;
+    int altitude_p500 = altitude + 500;
+    int altitude_p1000 = altitude + 1000;
 
-    int cap_1 = cap - 30;
-    int cap_2 = cap - 15;
-    int cap_3 = cap + 15;
-    int cap_4 = cap + 30;
-
-    char direction = 'E';
+    /* Graduations de cap calculées */
+    int cap_m30 = cap - 30;
+    int cap_m15 = cap - 15;
+    int cap_p15 = cap + 15;
+    int cap_p30 = cap + 30;
 
     printf("+-----------------------------------------------------------------------+\n");
     printf("|                         A320 FLIGHT DISPLAY                           |\n");
     printf("+--------------------------------------+--------------------------------+\n");
+
     printf("|              PRIMARY FLIGHT DISPLAY  |       NAVIGATION DISPLAY       |\n");
     printf("+--------------------------------------+--------------------------------+\n");
-    printf("| SPEED        ATTITUDE       ALTITUDE  |          HEADING               |\n");
+
+    printf("| SPEED        ATTITUDE       ALTITUDE |          HEADING               |\n");
     printf("|                                      |                                |\n");
-    printf("| %3d              ^           %4d    |             %03d               |\n",
-           vitesse_4, altitude_4, cap_4);
-    printf("| %3d           /  |  \\        %4d    |       %03d       %03d           |\n",
-           vitesse_3, altitude_3, cap_3, cap_4);
-    printf("| %3d         /    |    \\      %4d    |   %03d     +     %03d           |\n",
-           vitesse_2, altitude_2, cap_2, cap);
-    printf("|>%3d -------+-----+-----       %4d    |       %03d       %03d           |\n",
-           vitesse, altitude, cap_1, cap_2);
-    printf("| %3d         \\    |    /      %4d    |             %03d               |\n",
-           vitesse_1, altitude_1, cap);
-    printf("| %3d           \\  |  /        %4d    |                                |\n",
-           vitesse_2, altitude_2, cap);
-    printf("| %3d              v           %4d    |             %c                  |\n",
-           vitesse_1, altitude_1, direction);
+
+    printf("| %3d              ^           %4d   |             %03d               |\n",
+           vitesse_p40, altitude_p1000, cap_p30);
+
+    printf("| %3d           /  |  \\        %4d   |       %03d       %03d           |\n",
+           vitesse_p20, altitude_p500, cap_m15, cap_p30);
+
+    printf("| %3d         /    |    \\      %4d   |   %03d     +     %03d           |\n",
+           vitesse_m20, altitude, cap_m30, cap);
+
+    printf("|>%3d -------+-----+-----       %4d   |       %03d       %03d           |\n",
+           vitesse, altitude_m500, cap_m15, cap_p15);
+
+    printf("| %3d         \\    |    /      %4d   |             %03d               |\n",
+           vitesse_m20, altitude_m1000, cap);
+
+    printf("| %3d           \\  |  /        %4d   |                                |\n",
+           vitesse_m40, altitude_m500, cap_p15);
+
+    printf("| %3d              v           %4d   |             E                  |\n",
+           vitesse_m20, altitude_m1000, cap_p30);
+
     printf("|                                      |                                |\n");
+
     printf("|     %3d  %3d  [%3d]  %3d  %3d       |      %03d  %03d  %03d  %03d      |\n",
-           vitesse_1, vitesse_2, vitesse, vitesse_3, vitesse_4,
-           cap_1, cap_2, cap, cap_3);
+           vitesse_m40, vitesse_m20, vitesse,
+           vitesse_p20, vitesse_p40,
+           cap_m30, cap_m15, cap, cap_p15);
+
     printf("+--------------------------------------+--------------------------------+\n");
+
     printf("|              HEADING / TRACK         |        FLIGHT DATA             |\n");
     printf("|                                      |                                |\n");
-    printf("|                  N                   | SPEED       %3d KTS            |\n",
+    printf("|                  N                   | SPEED      %3d KTS             |\n",
            vitesse);
-    printf("|                  |                   | ALTITUDE   %4d FT             |\n",
+    printf("|                  |                   | ALTITUDE   %4d FT              |\n",
            altitude);
-    printf("|            W ----+---- E             | HEADING     %03d DEG            |\n",
+    printf("|            W ----+---- E             | HEADING    %03d DEG             |\n",
            cap);
     printf("|                  |                   |                                |\n");
     printf("|                  S                   |                                |\n");
+    printf("|                %03d deg               |                                |\n",
+           cap);
+
     printf("+--------------------------------------+--------------------------------+\n");
-    printf("|              END OF DISPLAY          |                                |\n");
+
+    printf("|              HORIZON / TURN         |        AIRCRAFT DATA            |\n");
+    printf("|                                      |                                |\n");
+    printf("|                  ^                   | THRUST       58 %%               |\n");
+    printf("|              /   |   \\               | VERTICAL      0 FT/MIN         |\n");
+    printf("|            /     |     \\             |                                |\n");
+    printf("|----------+-------+-------+-----------|                                |\n");
+    printf("|            \\     |     /             |                                |\n");
+    printf("|              \\   |   /               |                                |\n");
+    printf("|                  v                   |                                |\n");
+
+    printf("+-----------------------------------------------------------------------+\n");
+
+    printf("| SPD %3d KTS | ALT %4d FT | HDG %03d | EFIS TRAINING DISPLAY          |\n",
+           vitesse, altitude, cap);
+
     printf("+-----------------------------------------------------------------------+\n");
 
     return 0;
