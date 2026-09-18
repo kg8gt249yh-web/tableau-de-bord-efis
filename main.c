@@ -50,11 +50,11 @@ int main(void)
     printf("| %3d         \\    |    /      %4d   |             %03d               |\n",
            vitesse_m20, altitude_m1000, cap);
 
-    printf("| %3d           \\  |  /        %4d   |                                |\n",
-           vitesse_m40, altitude_m500, cap_p15);
+ printf("| %3d           \\  |  /        %4d   |                                |\n",
+       vitesse_m40, altitude_m500);
 
-    printf("| %3d              v           %4d   |             E                  |\n",
-           vitesse_m20, altitude_m1000, cap_p30);
+   printf("| %3d              v           %4d   |             E                  |\n",
+       vitesse_m20, altitude_m1000);
 
     printf("|                                      |                                |\n");
 
